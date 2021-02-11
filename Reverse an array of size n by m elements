@@ -1,0 +1,43 @@
+// Rotate an array of n element by d elements
+// Suppose we have an array [1,2,3,4,5,6,7] and we want to rotate it by 3 elements.
+// After rotation it will become [4,5,6,7,1,2,3]
+// So we can achieve this ??
+// What we will do.
+
+//reverse array from 0 to d-1, it will be [3,2,1,4,5,6,7]
+// reverse array from d to n-1, it wiil be [3,2,1,7,6,5,4]
+// reverse the array from o to n-1, it will be [4,5,6,7,1,2,3]
+// resulting arrow is expected result
+
+//Psudo algo is written below
+array RotatebyDelem(a[], d)
+{
+int arrsize = a.size();
+// Reverse array from 0 to d-1
+int re = d -1;
+for(int i = 0; i <= re; i++,re--)
+{
+    int temp = a[i];
+    a[i] = a[re];
+    a[re] = temp;
+}
+
+// Reverse array from d to n-1
+re = arrsize - 1;
+for(int i = d; i <= re; i++,re--)
+{
+    int temp = a[i];
+    a[i] = a[re];
+    a[re] = temp;
+}
+// Reverse array from 0 to n-1
+
+re  = arrsize - 1;
+for(int i = 0; i <= re; i++, re--)
+{
+    int temp = a[i];
+    a[i] = a[re];
+    a[re] = temp;
+}
+return a;
+}
